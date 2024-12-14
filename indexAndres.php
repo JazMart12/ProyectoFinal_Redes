@@ -201,10 +201,6 @@ header .contenedor {
 		</footer>
 	  </div>
 
-
-
-
-
     <script src="js/script.js"></script>
 
     <!-- Tu JavaScript para el cambio de tema -->

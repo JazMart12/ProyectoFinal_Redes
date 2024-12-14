@@ -98,6 +98,7 @@
   </symbol>
 </svg>
 
+<!-- Header -->
 	<header>
 		<div class="contenedor">
 			<h2 class="logotipo">PeliConnect</h2>
@@ -140,7 +141,7 @@
 		  </div>
 		  <div class="b-example-divider"></div>
 
-
+<!-- Carrusel de peliculas -->
 
 		  <div class="container mt-5">
 			<h2 class="text-center mb-4">Latest TV Shows</h2>
@@ -183,10 +184,7 @@
 		</div>
 <br><br>
 
-
-
-
-
+<!-- Carrusel de anuncios de peliculas -->
 		<div id="carouselExampleDark" class="carousel carousel-dark slide">
 			<div class="carousel-indicators">
 			  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
