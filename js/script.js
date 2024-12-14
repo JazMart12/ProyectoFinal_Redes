@@ -60,3 +60,11 @@ function mostrarPeliculas() {
         })
     })
 }
+
+function login(user, pass) {
+    url = NODE_URL + "/login/" + user + "/" + pass;
+    fetch(url)
+    .then(res => {
+        return res;
+    })
+}
