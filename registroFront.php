@@ -2,7 +2,7 @@
     session_start();
 ?>
 <html>
-<form action='login.php' method='POST'>
+<form action='registro.php' method='POST'>
             <label for='user'>Usuario:</label><br>
             <input type='text' id='user' name='user' value=''><br>
             <label for='pass'>Contraseña:</label><br>
