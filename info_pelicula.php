@@ -89,13 +89,13 @@
         }
     </style>
 </head>
-<body>
+<body id="infoPeli">
     <div class="container mt-5">
         <!-- Encabezado -->
         <div class="row mb-4">
             <div class="col-12">
-                <h1 class="fw-bold">Wicked</h1>
-                <p class="text-muted">Título original: Wicked: Part I &bull; 2024 &bull; A &bull; 2h 40min</p>
+                <h1 class="fw-bold" id="titulo">Wicked</h1>
+                <p class="text-muted" id="detalles">Título original: Wicked: Part I &bull; 2024 &bull; 120 minutos</span></p>
             </div>
         </div>
 
@@ -103,7 +103,7 @@
         <div class="media-container">
             <!-- Poster -->
             <div class="poster-container">
-                <img src="img/poster-wicked.jpg" alt="Wicked Poster">
+                <img id="imgPelicula" src="img/poster-wicked.jpg" alt="Wicked Poster">
                 <button class="btn btn-custom mt-3 px-4 py-2">Añadir a Mi lista</button>
             </div>
 
@@ -138,7 +138,7 @@
                     <span class="badge bg-secondary">Musical</span>
                     <span class="badge bg-secondary">Romance</span>
                 </div>
-                <p>
+                <p id="overview">
                     La historia de cómo una joven de piel verde es incriminada por el Mago de Oz y se convierte en la Malvada Bruja del Oeste. La primera de una adaptación cinematográfica en dos partes del musical de Broadway.
                 </p>
                 <p><strong>Dirección:</strong> <a href="#" class="text-info">Jon M. Chu</a></p>
@@ -146,6 +146,8 @@
             </div>
         </div>
     </div>
+
+        <script src="js/script.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
