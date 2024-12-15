@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="peliInfoStyles.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             background-color: #1e1e1e;
@@ -26,25 +26,22 @@
             color: #aaaaaa !important;
             font-size: 1.1rem;
         }
-        .poster-container {
-            width: 100%;
-            max-width: 350px;
-            height: 525px;
-            margin: 0 auto;
+        /* Contenedor principal de video y poster */
+        .media-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            justify-content: center;
         }
-        .poster-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
+        /* Ajustar altura y anchura proporcional de poster y video */
+        .poster-container, .video-container {
+            height: 400px;
+            width: 300px; /* Ancho fijo para el póster */
         }
         .video-container {
-            width: 100%;
-            max-width: 650px;
-            aspect-ratio: 16 / 9;
-            margin: 0 auto;
+            width: 500px; /* Más ancho para el video */
         }
-        .video-container video {
+        .poster-container img, .video-container video {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -54,9 +51,12 @@
             background-color: #2b2b2b;
             border-radius: 10px;
             padding: 20px 15px;
-            margin-bottom: 20px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            height: 190px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .sidebar i {
             font-size: 2.5rem;
@@ -76,6 +76,17 @@
         .btn-custom:hover {
             background-color: #e0a800;
         }
+        /* Ajuste para que los badges no se solapen */
+        .badges-container {
+            margin-top: 2.5rem; /* Margen superior */
+            clear: both; /* Evita el solapamiento */
+        }
+        .badges-container .badge {
+            margin: 0 5px 5px 0;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
@@ -88,28 +99,24 @@
             </div>
         </div>
 
-        <!-- Contenido Principal -->
-        <div class="row g-4 align-items-start">
+        <!-- Contenedor Principal -->
+        <div class="media-container">
             <!-- Poster -->
-            <div class="col-md-4 text-center">
-                <div class="poster-container">
-                    <img src="img/poster-wicked.jpg" alt="Wicked Poster">
-                </div>
+            <div class="poster-container">
+                <img src="img/poster-wicked.jpg" alt="Wicked Poster">
                 <button class="btn btn-custom mt-3 px-4 py-2">Añadir a Mi lista</button>
             </div>
 
             <!-- Video -->
-            <div class="col-md-6">
-                <div class="video-container">
-                    <video controls>
-                        <source src="media/trailer-wicked.mp4" type="video/mp4">
-                        Tu navegador no soporta el elemento de video.
-                    </video>
-                </div>
+            <div class="video-container">
+                <video controls>
+                    <source src="media/trailer-wicked.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
             </div>
 
-            <!-- Sidebar -->
-            <div class="col-md-2">
+            <!-- Sidebar (Videos e Imágenes) -->
+            <div class="d-flex flex-column justify-content-between">
                 <div class="sidebar mb-3">
                     <i class="bi bi-camera-video"></i>
                     <p>27 VIDEOS</p>
@@ -124,7 +131,7 @@
         <!-- Géneros y Descripción -->
         <div class="row mt-4">
             <div class="col-12">
-                <div class="mb-3">
+                <div class="badges-container">
                     <span class="badge bg-secondary">Fairy Tale</span>
                     <span class="badge bg-secondary">Pop Musical</span>
                     <span class="badge bg-secondary">Fantasy</span>
