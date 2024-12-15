@@ -125,7 +125,6 @@ header .contenedor {
 </header>
 <br>
     <main id="main"></main>
-    <button onclick="mostrarPeliculas()">Buscar</button>
 
     <!-- Footer -->
 	<div class="container">
@@ -238,6 +237,13 @@ header .contenedor {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/main.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        mostrarPeliculas(); // Llama a la función automáticamente cuando la página carga
+    });
+</script>
+
 
 
 </body>
