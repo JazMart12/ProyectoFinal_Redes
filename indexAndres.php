@@ -119,7 +119,6 @@ header .contenedor {
 			<nav>
 				<a href="index.php" class="activo">Inicio</a>
 				<a href="indexAndres.php" class="activo">Películas</a>
-				<a href="#" class="activo">Más Recientes</a>
 				<a href="#" class="activo">Mi lista</a>
 			</nav>
 		</div>
