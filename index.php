@@ -156,27 +156,15 @@
 				<!-- Carrusel -->
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<div class="d-flex justify-content-around">
-							<img src="https://via.placeholder.com/250x400" alt="Película 1">
-							<img src="https://via.placeholder.com/250x400" alt="Película 2">
-							<img src="https://via.placeholder.com/250x400" alt="Película 3">
-							<img src="https://via.placeholder.com/250x400" alt="Película 4">
+						<div class="d-flex justify-content-around" id="carru1">
 						</div>
 					</div>
 					<div class="carousel-item">
-						<div class="d-flex justify-content-around">
-							<img src="https://via.placeholder.com/250x400" alt="Película 5">
-							<img src="https://via.placeholder.com/250x400" alt="Película 6">
-							<img src="https://via.placeholder.com/250x400" alt="Película 7">
-							<img src="https://via.placeholder.com/250x400" alt="Película 8">
+						<div class="d-flex justify-content-around" id="carru2">
 						</div>
 					</div>
 					<div class="carousel-item">
-						<div class="d-flex justify-content-around">
-							<img src="https://via.placeholder.com/250x400" alt="Película 9">
-							<img src="https://via.placeholder.com/250x400" alt="Película 10">
-							<img src="https://via.placeholder.com/250x400" alt="Película 11">
-							<img src="https://via.placeholder.com/250x400" alt="Película 12">
+						<div class="d-flex justify-content-around" id="carru3">
 						</div>
 					</div>
 				</div>
@@ -303,6 +291,7 @@
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/script.js"></script>
 	<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 

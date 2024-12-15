@@ -4,7 +4,7 @@
     $contrasena = $_POST['pass'];
 
     // Construir la URL con los parámetros
-    $url = "http://localhost:3000/login/$usuario/$contrasena";
+    $url = "http://localhost:3000/registrarUsuario/$usuario/$contrasena";
 
     // Realizar la solicitud GET
     $response = file_get_contents($url);
@@ -14,9 +14,9 @@
         echo "Inicio de sesión exitoso.";
         session_start();
 
-        $_SESSION["usuario"] = $_POST["user"];
+        // $_SESSION["usuario"] = $_POST["user"];
         
-        header("Location: indexAndres.php");
+        // header("Location: indexAndres.php");
         exit;
     } else {
         echo "Credenciales incorrectas.";

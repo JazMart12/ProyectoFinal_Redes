@@ -1,5 +1,7 @@
 <main id="main">
     <?php
+        session_start();
+
         if (isset($_SESSION["usuario"])) {
         echo "<p>Bienvenido ".$_SESSION["usuario"]."</p>";
         echo "<form action='logout.php'>
