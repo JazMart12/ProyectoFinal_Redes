@@ -105,7 +105,6 @@
 			<nav>
 				<a href="index.php" class="activo">Inicio</a>
 				<a href="indexAndres.php">Películas</a>
-				<a href="#">Más Recientes</a>
 				<a href="#">Mi lista</a>
 			</nav>
 		</div>
