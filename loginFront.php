@@ -1,4 +1,4 @@
-<main id="main">
+<main>
     <?php
         session_start();
 

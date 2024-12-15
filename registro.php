@@ -4,21 +4,20 @@
     $contrasena = $_POST['pass'];
 
     // Construir la URL con los parámetros
-    $url = "http://localhost:3000/login/$usuario/$contrasena";
+    $url = "http://localhost:3000/registrarUsuario/$usuario/$contrasena";
 
     // Realizar la solicitud GET
     $response = file_get_contents($url);
 
     // Decodificar la respuesta
     if ($response === "true") {
-        echo "Inicio de sesión exitoso.";
-        session_start();
-
-        $_SESSION["usuario"] = $_POST["user"];
-        
-        header("Location: indexAndres.php");
+        echo "Usuario registrado con exito..";
+        sleep(4);
+        header("Location: loginFront.php");
         exit;
     } else {
-        echo "Credenciales incorrectas.";
+        echo "El usuario ya existe, elija otro nombre";
+        sleep(4);
+        header("Location: registroFront.php");
     }
 ?>
