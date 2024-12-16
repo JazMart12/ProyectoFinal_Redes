@@ -161,17 +161,17 @@ session_start();
 		<div class="contenedor">
 			<h2 class="logotipo" style="color:#E50914">PeliConnect</h2>
 			<nav>
-				<a href="index.php" class="activo">Inicio</a>
-				<a href="indexAndres.php">Películas</a>
-				<?php if (isset($_SESSION["usuario"])): ?>
-					<a href="">Andres</a>
-					<a href="lista.php">Mi lista</a>
-				<?php else: ?>
-					<a href="loginFront.php">Iniciar Sesion</a>
-					<a href="logout.php">Cerrar Sesion</a>
-					<a href="registroFront.php">Registrarse</a>
-				<?php endif; ?>
-			</nav>
+          <a href="index.php" class="activo">Inicio</a>
+          <a href="indexAndres.php">Películas</a>
+          <?php if (isset($_SESSION["usuario"])): ?>
+              <a href=""><?php echo $_SESSION["usuario"]; ?></a>
+              <a href="lista.php">Mi lista</a>
+              <a href="logout.php">Cerrar Sesion</a>
+          <?php else: ?>
+              <a href="loginFront.php">Iniciar Sesion</a>
+              <a href="registroFront.php">Registrarse</a>
+          <?php endif; ?>
+      </nav>
 		</div>
 	</header>
 
