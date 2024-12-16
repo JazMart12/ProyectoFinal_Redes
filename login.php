@@ -15,10 +15,14 @@
         session_start();
 
         $_SESSION["usuario"] = $_POST["user"];
+        setcookie('usuario', $_POST['user']);
         
         header("Location: indexAndres.php");
         exit;
     } else {
         echo "Credenciales incorrectas.";
     }
+?>
+<?php
+  
 ?>

@@ -122,8 +122,8 @@ header .contenedor {
 			<h2 class="logotipo">PeliConnect</h2>
 			<nav>
 				<a href="index.php" class="activo">Inicio</a>
-				<a href="indexAndres.php" class="activo">Películas</a>
-				<a href="#" class="activo">Mi lista</a>
+				<a href="indexAndres.php">Películas</a>
+				<a href="lista.php">Mi lista</a>
 			</nav>
 		</div>
 </header>
