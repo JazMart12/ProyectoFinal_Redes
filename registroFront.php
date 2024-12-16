@@ -8,21 +8,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro - Pelicconnect</title>
+
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    /* Estilo general del fondo */
     body {
       background: url('img/fondo_signin.jpg') no-repeat center center fixed;
       background-size: cover;
       margin: 0;
-      height: 100vh; /* Ocupa toda la altura de la pantalla */
-      display: flex;
-      align-items: center; /* Centra verticalmente */
-      justify-content: center; /* Centra horizontalmente */
       position: relative;
       font-family: Arial, sans-serif;
+      min-height: 100vh;
     }
 
-    /* Capa de oscurecimiento del fondo */
     body::before {
       content: "";
       position: absolute;
@@ -30,21 +31,76 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.6); /* Oscurece la imagen de fondo */
+      background: rgba(0, 0, 0, 0.6);
       z-index: 0;
     }
 
-    /* Contenedor del formulario */
+    /* Contenedor principal que organiza header, main y footer */
+    .page-container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header, footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    header {
+      background: rgba(0,0,0,0.5);
+      padding: 2rem 0;
+    }
+
+    header .contenedor {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    header .logotipo {
+      font-size: 5rem;
+      color: #e50914;
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    header nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #fff;
+      font-weight: normal;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
     .form-container {
       position: relative;
       z-index: 1;
       max-width: 400px;
       width: 100%;
       padding: 2rem;
-      background: #ffffff; /* Fondo blanco puro */
+      background: #ffffff;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-      text-align: left; /* Alineación del texto a la izquierda */
+      text-align: left;
     }
 
     .form-container h2 {
@@ -83,7 +139,7 @@
     .btn-register {
       width: 100%;
       padding: 0.75rem;
-      background-color: #e50914; /* Rojo similar al botón anterior */
+      background-color: #e50914;
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -98,51 +154,172 @@
     }
 
     footer {
-      text-align: center;
+      background: rgba(0,0,0,0.5);
       color: #fff;
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
+      padding: 1rem 0;
     }
 
-    footer p {
-      margin: 0;
-      font-size: 0.9rem;
+    footer .container {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    footer h5, footer p, footer a {
+      color: #fff !important;
+    }
+
+    footer a {
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .text-body-secondary {
+      color: rgba(255,255,255,0.7)!important;
+    }
+
+    .link-body-emphasis {
+      color: #fff !important;
+    }
+
+    .link-body-emphasis:hover {
+      color: #ccc !important;
     }
   </style>
 </head>
 <body>
-  <!-- Contenedor del formulario -->
-  <div class="form-container">
-    <h2>Registro</h2>
-    <form action="register.php" method="POST">
-      <div class="form-group">
-        <label for="username">Nombre de usuario</label>
-        <input type="text" id="username" name="username" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="name">Nombre</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="surname">Apellido</label>
-        <input type="text" id="surname" name="surname" required>
-      </div>
-      <div class="form-group">
-        <label for="dob">Fecha de nacimiento</label>
-        <input type="date" id="dob" name="dob" required>
-      </div>
-      <button type="submit" class="btn-register">Registrarme</button>
-    </form>
-  </div>
+<div class="page-container">
 
-  <!-- Pie de página -->
-  <footer>
-    <p>&copy; 2024 Pelicconnect. Todos los derechos reservados.</p>
-  </footer>
+    <header>
+        <div class="contenedor">
+            <h2 class="logotipo">PeliConnect</h2>
+            <nav>
+                <a href="index.php" class="activo">Inicio</a>
+                <a href="indexAndres.php">Películas</a>
+                <?php if (isset($_SESSION["usuario"])): ?>
+                    <a href="">Andres</a>
+                    <a href="lista.php">Mi lista</a>
+                <?php else: ?>
+                    <a href="loginFront.php">Iniciar Sesion</a>
+                    <a href="logout.php">Cerrar Sesion</a>
+                    <a href="registroFront.php">Registrarse</a>
+                <?php endif; ?>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+      <div class="form-container">
+        <h2>Registro</h2>
+        <form action="register.php" method="POST">
+          <div class="form-group">
+            <label for="username">Nombre de usuario</label>
+            <input type="text" id="username" name="username" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="surname">Apellido</label>
+            <input type="text" id="surname" name="surname" required>
+          </div>
+          <div class="form-group">
+            <label for="dob">Fecha de nacimiento</label>
+            <input type="date" id="dob" name="dob" required>
+          </div>
+          <button type="submit" class="btn-register">Registrarme</button>
+        </form>
+      </div>
+    </main>
+
+    <footer class="py-5">
+      <div class="container">
+          <div class="row">
+            <div class="col-6 col-md-2 mb-3">
+              <h5>Section</h5>
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+              </ul>
+            </div>
+
+            <div class="col-6 col-md-2 mb-3">
+              <h5>Section</h5>
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+              </ul>
+            </div>
+
+            <div class="col-6 col-md-2 mb-3">
+              <h5>Section</h5>
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+              </ul>
+            </div>
+
+            <div class="col-md-5 offset-md-1 mb-3">
+              <form>
+                <h5>Subscribe to our newsletter</h5>
+                <p>Monthly digest of what's new and exciting from us.</p>
+                <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                  <label for="newsletter1" class="visually-hidden">Email address</label>
+                  <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                  <button class="btn btn-primary" type="button">Subscribe</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+            <p>&copy; 2024 Company, Inc. All rights reserved.</p>
+            <ul class="list-unstyled d-flex">
+                <li class="ms-3">
+                    <a class="link-body-emphasis" href="#">
+                        <i class="bi bi-twitter" style="font-size: 24px;"></i>
+                    </a>
+                </li>
+                <li class="ms-3">
+                    <a class="link-body-emphasis" href="#">
+                        <i class="bi bi-instagram" style="font-size: 24px;"></i>
+                    </a>
+                </li>
+                <li class="ms-3">
+                    <a class="link-body-emphasis" href="#">
+                        <i class="bi bi-facebook" style="font-size: 24px;"></i>
+                    </a>
+                </li>
+            </ul>
+          </div>
+      </div>
+    </footer>
+
+</div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  <script src="js/script.js"></script>
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
