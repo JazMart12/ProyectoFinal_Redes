@@ -115,26 +115,14 @@
   <!-- Contenedor del formulario -->
   <div class="form-container">
     <h2>Registro</h2>
-    <form action="register.php" method="POST">
+    <form action="registro.php" method="POST">
       <div class="form-group">
-        <label for="username">Nombre de usuario</label>
-        <input type="text" id="username" name="username" required>
+        <label for="user">Nombre de usuario</label>
+        <input type="text" id="user" name="user" required>
       </div>
       <div class="form-group">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="name">Nombre</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="surname">Apellido</label>
-        <input type="text" id="surname" name="surname" required>
-      </div>
-      <div class="form-group">
-        <label for="dob">Fecha de nacimiento</label>
-        <input type="date" id="dob" name="dob" required>
+      <label for="pass">Contraseña</label>
+      <input type="password"id="pass" name="pass" placeholder="Ingrese su contraseña" required>
       </div>
       <button type="submit" class="btn-register">Registrarme</button>
     </form>

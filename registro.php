@@ -12,12 +12,12 @@
     // Decodificar la respuesta
     if ($response === "true") {
         echo "Usuario registrado con exito..";
-        sleep(4);
+        sleep(2);
         header("Location: loginFront.php");
         exit;
     } else {
         echo "El usuario ya existe, elija otro nombre";
-        sleep(4);
+        sleep(2);
         header("Location: registroFront.php");
     }
 ?>

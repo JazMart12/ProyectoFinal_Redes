@@ -124,7 +124,7 @@ header .contenedor {
 				<a href="index.php" class="activo">Inicio</a>
 				<a href="indexAndres.php">Películas</a>
 				<?php if (isset($_SESSION["usuario"])): ?>
-					<a href="">Andres</a>
+					<a href=""><?php echo $_SESSION["usuario"]; ?></a>
 					<a href="lista.php">Mi lista</a>
 					<a href="logout.php">Cerrar Sesion</a>
 				<?php else: ?>
