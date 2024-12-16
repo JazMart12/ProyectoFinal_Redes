@@ -111,10 +111,10 @@
 				<?php if (isset($_SESSION["usuario"])): ?>
 					<a href=""><?php echo $_SESSION["usuario"]; ?></a>
 					<a href="lista.php">Mi lista</a>
-					<a href="logout.php">Cerrar Sesion</a>
 				<?php else: ?>
 					<a href="loginFront.php">Iniciar Sesion</a>
-					<a href="registroFront.php">Registrase</a>
+					<a href="logout.php">Cerrar Sesion</a>
+					<a href="registroFront.php">Registrarse</a>
 				<?php endif; ?>
 			</nav>
 		</div>
@@ -153,7 +153,7 @@
 <!-- Carrusel de peliculas -->
 
 		  <div class="container mt-5">
-			<h2 class="text-center mb-4">Latest TV Shows</h2>
+			<h2 class="text-center mb-4">Catalogo</h2>
 			<div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
 				<!-- Indicadores Personalizados -->
 				<div class="carousel-indicators">
