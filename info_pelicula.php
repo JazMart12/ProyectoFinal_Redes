@@ -87,6 +87,43 @@
             font-size: 0.9rem;
             white-space: nowrap;
         }
+        /* Estilos para la sección de reseñas */
+#reviewForm {
+    max-width: 600px; /* Ancho máximo para el formulario */
+    margin: 0 auto; /* Centrar el formulario */
+}
+
+#reviewForm input, 
+#reviewForm textarea, 
+#reviewForm select {
+    width: 100%; /* Ajustar el ancho al 100% del contenedor */
+    margin-bottom: 1rem; /* Espacio entre los campos */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ced4da; /* Borde suave */
+}
+
+#reviewForm textarea {
+    resize: none; /* Evita que se redimensione manualmente */
+    height: 150px; /* Altura específica para el textarea */
+}
+
+#reviewForm button {
+    width: 100%; /* Botón del mismo ancho */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    font-weight: bold;
+}
+
+#reviewsContainer {
+    max-width: 600px; /* Ancho máximo para las reseñas */
+    margin: 0 auto; /* Centrar reseñas */
+    padding: 10px;
+    background-color: #2b2b2b; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro */
+    border-radius: 10px;
+}
+
     </style>
 </head>
 <body id="infoPeli">
@@ -146,6 +183,79 @@
             </div>
         </div>
     </div>
+
+
+     <!-- Sección de Reseñas -->
+     <div class="row mt-5">
+            <div class="col-12">
+                <h3 style="text-align: center" class="fw-bold mb-3">Escribe una Reseña</h3>
+                <form id="reviewForm" class="mb-4">
+                    <div class="mb-3">
+                        <label for="reviewName" class="form-label">Tu Nombre</label>
+                        <input type="text" class="form-control" id="reviewName" placeholder="Ingresa tu nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="reviewText" class="form-label">Tu Reseña</label>
+                        <textarea class="form-control" id="reviewText" rows="4" placeholder="Escribe tu reseña aquí..." required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="reviewRating" class="form-label">Calificación</label>
+                        <select class="form-select" id="reviewRating" required>
+                            <option value="" disabled selected>Selecciona una calificación</option>
+                            <option value="1">1 - Muy mala</option>
+                            <option value="2">2 - Mala</option>
+                            <option value="3">3 - Regular</option>
+                            <option value="4">4 - Buena</option>
+                            <option value="5">5 - Excelente</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar Reseña</button>
+                </form>
+                
+                <!-- Reseñas Publicadas -->
+                <h4 style="text-align: center" class="fw-bold mb-3">Reseñas</h4>
+                <div id="reviewsContainer">
+                    <p id="noReviews" class="text-muted">Aún no hay reseñas. ¡Sé el primero en escribir una!</p>
+                </div>
+            </div>
+
+        </div>
+<br><br><br>
+        <!-- Script para manejar reseñas -->
+        <script>
+            const reviewForm = document.getElementById('reviewForm');
+            const reviewsContainer = document.getElementById('reviewsContainer');
+            const noReviews = document.getElementById('noReviews');
+
+            reviewForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Captura los valores del formulario
+                const name = document.getElementById('reviewName').value;
+                const text = document.getElementById('reviewText').value;
+                const rating = document.getElementById('reviewRating').value;
+
+                // Crea una reseña
+                const reviewElement = document.createElement('div');
+                reviewElement.classList.add('border', 'rounded', 'p-3', 'mb-3', 'bg-light', 'text-dark');
+                reviewElement.innerHTML = `
+                    <h5 class="mb-1">${name}</h5>
+                    <p class="mb-1">${text}</p>
+                    <p class="mb-0"><strong>Calificación:</strong> ${rating} / 5</p>
+                `;
+
+                // Elimina el mensaje de "no hay reseñas" si existe
+                if (noReviews) {
+                    noReviews.remove();
+                }
+
+                // Agrega la reseña al contenedor
+                reviewsContainer.appendChild(reviewElement);
+
+                // Limpia el formulario
+                reviewForm.reset();
+            });
+        </script>
 
         <script src="js/script.js"></script>
 
