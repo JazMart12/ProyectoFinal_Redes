@@ -13,21 +13,40 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-      body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        background-color: #f8f9fa;
-      }
-      main {
-        max-width: 400px;
-        width: 100%;
-        padding: 2rem;
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
+     body {
+    background: url('img/fondo_signin.jpg') no-repeat center center fixed;
+    background-size: cover; /* Cubre toda la pantalla */
+    height: 100vh; /* Ocupa el 100% de la altura de la pantalla */
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Oscurece solo la imagen de fondo */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Oscurece la imagen con una capa negra semi-transparente */
+    z-index: 0; /* Capa por debajo del contenido */
+}
+
+/* Tarjeta de inicio de sesión (fondo blanco puro) */
+main {
+    position: relative;
+    z-index: 1; /* Asegura que la tarjeta esté por encima del overlay */
+    max-width: 400px;
+    width: 100%;
+    padding: 2rem;
+    background: #ffffff; /* Fondo blanco puro */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra ligera */
+}
       h1 {
         text-align: center;
         margin-bottom: 1.5rem;
