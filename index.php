@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	<style>
 		.bd-mode-toggle .dropdown-menu .active .bi {
          display: block !important;
@@ -34,6 +35,45 @@
         --bs-btn-active-bg: #5a23c8;
         --bs-btn-active-border-color: #5a23c8;
       }
+		.buscar-cont {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.buscar-input {
+  background-color: #333;
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px 0 0 4px;
+  font-size: 14px;
+  width: 200px;
+}
+
+.buscar-input:focus {
+  outline: none;
+}
+
+.buscar-boton {
+  background-color: #e50914;
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.buscar-boton:hover {
+  background-color: #c10812;
+}
+
+.buscar-boton i {
+  font-size: 16px;
+}
+
+		
 
 	</style>
 
@@ -117,6 +157,12 @@
 					<a href="registroFront.php">Registrase</a>
 				<?php endif; ?>
 			</nav>
+			<div class="buscar-cont">
+      <input type="text" placeholder="Buscar..." class="buscar-input">
+      <button class="buscar-boton">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
 		</div>
 	</header>
 
