@@ -57,11 +57,11 @@ session_start();
         margin-top: 1rem;
       }
       .btn-primary {
-        background-color: #0d6efd;
+        background-color: #e50914;
         border: none;
       }
       .btn-primary:hover {
-        background-color: #0b5ed7;
+        background-color: #c10812;
       }
       .btn-danger {
         margin-top: 1rem;
