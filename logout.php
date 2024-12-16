@@ -3,7 +3,7 @@
 
   session_destroy();
 
-  header("Location: indexAndres.php");
+  header("Location: index.php");
   setcookie("usuario",'',-1);
   exit;
 ?>
