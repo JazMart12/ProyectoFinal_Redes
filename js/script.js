@@ -147,6 +147,34 @@ function getLista(){
     })
 }
 
+function creaReviews() {
+    let pelicula = localStorage.getItem('nombre');
+    let url =  NODE_URL + "/leerReviews/" + pelicula;
+    fetch(url)
+    .then(res => res.json())
+    .then(data =>{
+        data.forEach(review => {
+            const { usuario, calificacion, texto} = review;
+            // Crea una reseña
+            const reviewElement = document.createElement('div');
+            reviewElement.classList.add('border', 'rounded', 'p-3', 'mb-3', 'bg-light', 'text-dark');
+            reviewElement.innerHTML = `
+                <h5 class="mb-1">${usuario}</h5>
+                <p class="mb-1">${texto}</p>
+                <p class="mb-0"><strong>Calificación:</strong> ${calificacion} / 5</p>
+            `;
+
+            // Elimina el mensaje de "no hay reseñas" si existe
+            if (noReviews) {
+                noReviews.remove();
+            }
+
+            // Agrega la reseña al contenedor
+            reviewsContainer.appendChild(reviewElement);
+        });
+        })
+}
+
 function llenarCarrusel(){
     console.log('Funcion llamada');
     let i=1;

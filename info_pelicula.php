@@ -186,14 +186,14 @@
 
 
      <!-- Sección de Reseñas -->
-     <div class="row mt-5">
+     <div class="row mt-5" id="resenia">
             <div class="col-12">
                 <h3 style="text-align: center" class="fw-bold mb-3">Escribe una Reseña</h3>
                 <form id="reviewForm" class="mb-4">
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="reviewName" class="form-label">Tu Nombre</label>
                         <input type="text" class="form-control" id="reviewName" placeholder="Ingresa tu nombre" required>
-                    </div>
+                    </div> -->
                     <div class="mb-3">
                         <label for="reviewText" class="form-label">Tu Reseña</label>
                         <textarea class="form-control" id="reviewText" rows="4" placeholder="Escribe tu reseña aquí..." required></textarea>
@@ -202,11 +202,17 @@
                         <label for="reviewRating" class="form-label">Calificación</label>
                         <select class="form-select" id="reviewRating" required>
                             <option value="" disabled selected>Selecciona una calificación</option>
-                            <option value="1">1 - Muy mala</option>
-                            <option value="2">2 - Mala</option>
-                            <option value="3">3 - Regular</option>
-                            <option value="4">4 - Buena</option>
-                            <option value="5">5 - Excelente</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar Reseña</button>
@@ -226,35 +232,61 @@
             const reviewForm = document.getElementById('reviewForm');
             const reviewsContainer = document.getElementById('reviewsContainer');
             const noReviews = document.getElementById('noReviews');
+            const resenia = document.getElementById('resenia');
 
             reviewForm.addEventListener('submit', function(event) {
                 event.preventDefault();
 
                 // Captura los valores del formulario
-                const name = document.getElementById('reviewName').value;
+                let usuario = getCookie('usuario');
+                let pelicula = localStorage.getItem('nombre');
                 const text = document.getElementById('reviewText').value;
                 const rating = document.getElementById('reviewRating').value;
 
-                // Crea una reseña
-                const reviewElement = document.createElement('div');
-                reviewElement.classList.add('border', 'rounded', 'p-3', 'mb-3', 'bg-light', 'text-dark');
-                reviewElement.innerHTML = `
-                    <h5 class="mb-1">${name}</h5>
-                    <p class="mb-1">${text}</p>
-                    <p class="mb-0"><strong>Calificación:</strong> ${rating} / 5</p>
-                `;
+                let url = NODE_URL + "/guardaReview/" + usuario + "/" + pelicula + "/" + rating+  "/" + text;
+                fetch(url)
+                .then(res => res.json())
+                .then(data =>{
+                    console.log(data);
+                })
 
-                // Elimina el mensaje de "no hay reseñas" si existe
-                if (noReviews) {
-                    noReviews.remove();
-                }
-
-                // Agrega la reseña al contenedor
-                reviewsContainer.appendChild(reviewElement);
-
+                
                 // Limpia el formulario
                 reviewForm.reset();
             });
+
+            document.addEventListener('DOMContentLoaded', function() {
+                event.preventDefault();
+
+                let pelicula = localStorage.getItem('nombre');
+
+                let url =  NODE_URL + "/leerReviews/" + pelicula;
+                console.log('Llamada a load');
+                fetch(url)
+                .then(res => res.json())
+                .then(data =>{
+                    data.forEach(review => {
+                        const { usuario, calificacion, texto} = review;
+                        // Crea una reseña
+                        const reviewElement = document.createElement('div');
+                        reviewElement.classList.add('border', 'rounded', 'p-3', 'mb-3', 'bg-light', 'text-dark');
+                        reviewElement.innerHTML = `
+                            <h5 class="mb-1">${usuario}</h5>
+                            <p class="mb-1">${texto}</p>
+                            <p class="mb-0"><strong>Calificación:</strong> ${calificacion} / 10</p>
+                        `;
+
+                        // Elimina el mensaje de "no hay reseñas" si existe
+                        if (noReviews) {
+                            noReviews.remove();
+                        }
+
+                        // Agrega la reseña al contenedor
+                        reviewsContainer.appendChild(reviewElement);
+                    });
+                })
+            });
+
         </script>
 
         <script src="js/script.js"></script>
