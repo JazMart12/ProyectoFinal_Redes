@@ -6,12 +6,17 @@ const carrusel = document.getElementById('movieCarousel');
 const carru1 = document.getElementById('carru1');
 const carru2 = document.getElementById('carru2');
 const carru3 = document.getElementById('carru3');
+const infoPeli = document.getElementById('infoPeli');
 
+if (infoPeli != null) {
+    infoPeli.onload = getDetalles();
+}
 if (carrusel != null) {
     carrusel.onload = llenarCarrusel();
 }
-main.onload = mostrarPeliculas();
-
+if (main != null) {
+    main.onload = mostrarPeliculas();
+}
 
 function buscarPelicula(nombre) {
     url = NODE_URL + "/fetch_movie/" + nombre;
@@ -47,7 +52,7 @@ function mostrarPeliculas() {
     .then(res => res.json())
     .then(data => {
         data.movies.forEach(movie => {
-            const {title, poster_path, vote_average, overview} = movie;
+            const {title, poster_path, vote_average, overview, id} = movie;
             const movieEl = document.createElement('div');
             movieEl.classList.add('movie');
             movieEl.innerHTML = `
@@ -62,14 +67,47 @@ function mostrarPeliculas() {
                 <h3>Overview</h3>
                 ${overview}
                 <br/> 
+                <button class="know-more" id="${id}">Know More</button>
             </div>
             
             `
     
             main.appendChild(movieEl);
+
+            document.getElementById(id).addEventListener('click', () => {
+                console.log(id)
+                localStorage.setItem('id',id)
+                window.location.href = './info_pelicula.php';
+              })
         })
     })
 }
+
+function getDetalles() {
+    let id = localStorage.getItem('id');
+    url = NODE_URL + "/get_details/" + id;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        const {title, original_title, release_date, runtime, overview, poster_path, vote_average } = data;
+
+        const titulo = document.getElementById('titulo');
+        const detalles = document.getElementById('detalles');
+        const imgPelicula = document.getElementById('imgPelicula');
+        const descripcion = document.getElementById('overview');
+        const fecha = document.getElementById('id');
+        const duracion = document.getElementById('duracion');
+        const puntuacion = document.getElementById('puntuacion');
+
+        titulo.innerHTML = title;
+        detalles.innerHTML = `<span style="font-weight: bold; color: orange; font-size: xx-large;">${vote_average}</span> <br>Titulo Original: ${original_title} &bull; ${release_date} &bull; ${runtime} minutos`;
+        imgPelicula.src = poster_path ? IMG_URL + poster_path : "http://via.placeholder.com/1080x1580";
+        descripcion.innerHTML = overview;
+        fecha.innerHTML = release_date;
+        duracion.innerHTML = runtime;
+
+    })
+  }
 
 function llenarCarrusel(){
     console.log('Funcion llamada');
