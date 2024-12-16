@@ -25,7 +25,7 @@ session_start();
 }
 
 /* Oscurece solo la imagen de fondo */
-body::before {
+     body::before {
     content: "";
     position: absolute;
     top: 0;
@@ -37,7 +37,7 @@ body::before {
 }
 
 /* Tarjeta de inicio de sesión (fondo blanco puro) */
-main {
+     main {
     position: relative;
     z-index: 1; /* Asegura que la tarjeta esté por encima del overlay */
     max-width: 400px;
